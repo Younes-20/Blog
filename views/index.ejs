@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/nav.ejs') %>
+            <div class="blogs">
+                <h2>All Articles</h2>
+                <% if (blogs.length> 0) { %>
+                    <% blogs.forEach(blog=> { %>
+                        <a class="single" href="/blogs/<%= blog._id %> ">
+                            <h2 class="title">
+                                <%= blog.title %>
+                            </h2>
+                            <p class="snippet">
+                                <%= blog.snippet %>
+                            </p>
+                            <span class="author">
+                                Written by <%= blog.author %>
+                            </span>
+                            <p class="time">
+                                <%= blog.createdAt.toLocaleString()%>
+                            </p>
+                        </a>
+
+                        <% }) %>
+                            <% } else { %>
+                                <p>there are no blogs to display</p>
+                                <% } %>
+
+            </div>
+
+
+            <%- include('./partials/footer.ejs') %>
+    </body>
+
+</html>
